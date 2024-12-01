@@ -7,6 +7,7 @@ const AddTask = ({ onAddTask }) => {
     const [description, setDescription] = useState('');
     const [dueDate, setDueDate] = useState('');
     const navigate = useNavigate();
+    const api = process.env.REACT_APP_BACKEND_API
 
     // Get the JWT token from localStorage (or sessionStorage)
     const token = localStorage.getItem('token');  // Replace with sessionStorage if needed
@@ -29,7 +30,7 @@ const AddTask = ({ onAddTask }) => {
 
         try {
             // Send the data to your Django backend (update the URL accordingly)
-            const response = await axios.post('http://127.0.0.1:8000/api/tasks/', newTask, {
+            const response = await axios.post(`${api}/api/tasks/`, newTask, {
                 headers: {
                     'Content-Type': 'application/json',
                     'Authorization': `Bearer ${token}`,  // Add the token to the header

@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { useNavigate, useLocation, Link } from 'react-router-dom';
 
 const Navbar = ({ user, onLogout }) => {
+    const api = process.env.REACT_APP_BACKEND_API
     const [dropdownOpen, setDropdownOpen] = useState(false);
     const navigate = useNavigate();
     const location = useLocation();
@@ -12,7 +13,7 @@ const Navbar = ({ user, onLogout }) => {
 
     const handleLogout = () => {
         onLogout(); // Perform logout logic (e.g., clearing user session)
-        navigate('/'); // Redirect to the login page
+        navigate(`${api}`); // Redirect to the login page
     };
     
 

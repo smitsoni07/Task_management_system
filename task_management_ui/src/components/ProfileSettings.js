@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 import axios from 'axios';
+const api = process.env.REACT_APP_BACKEND_API
 
-const ProfileSettings = ({ user, apiEndpoint = 'http://127.0.0.1:8000/api/profile/' }) => {
+const ProfileSettings = ({ user, apiEndpoint = `${api}/api/profile/` }) => {
     const [formData, setFormData] = useState({
         username: user?.username || '',
         email: user?.email || '',

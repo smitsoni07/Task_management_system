@@ -7,8 +7,8 @@ const Dashboard = ({ user }) => {
     const [showUpdateForm, setShowUpdateForm] = useState(false);
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState('');
-
-    const API_URL = 'http://127.0.0.1:8000/api/tasks/'; // Replace with your API endpoint
+    const api = process.env.REACT_APP_BACKEND_API
+    const API_URL = `${api}/api/tasks/`; // Replace with your API endpoint
 
     // Fetch tasks from the backend
     const fetchTasks = async () => {

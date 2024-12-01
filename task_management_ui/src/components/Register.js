@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import axios from 'axios';  // Import axios for making API requests
 
 const Register = () => {
+    const api = process.env.REACT_APP_BACKEND_API
     const [formData, setFormData] = useState({ username: '', email: '', password: '' });
     const [error, setError] = useState('');  // To store any error messages
     const navigate = useNavigate();
@@ -25,7 +26,7 @@ const Register = () => {
 
         try {
             // Sending registration data to the backend API (replace with your API URL)
-            const response = await axios.post('http://127.0.0.1:8000/api/register/', formData, {
+            const response = await axios.post(`${api}/api/register/`, formData, {
                 headers: {
                     'Content-Type': 'application/json',
                 }

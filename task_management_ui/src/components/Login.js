@@ -3,9 +3,11 @@ import { useNavigate } from 'react-router-dom';
 import axios from 'axios'; // Axios for making API requests
 
 const Login = ({ onLogin }) => {
+    const api = process.env.REACT_APP_BACKEND_API
     const [credentials, setCredentials] = useState({ username: '', password: '' });
     const [error, setError] = useState(''); // To display any login errors
     const navigate = useNavigate();
+
 
     // Handle input changes
     const handleChange = (e) => {
@@ -25,7 +27,7 @@ const Login = ({ onLogin }) => {
 
         try {
             // Make a POST request to your Django backend API for login
-            const response = await axios.post('http://127.0.0.1:8000/api/login/', credentials, {
+            const response = await axios.post(`${api}/api/login/`, credentials, {
                 headers: {
                     'Content-Type': 'application/json',
                 }
