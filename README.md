@@ -15,17 +15,18 @@ This is a Task Management System full-stack application built with Django REST F
 #### Steps:
 1. Clone the repository:
    ```bash
-   <!-- git clone https://github.com/your-repository.git -->
+   https://github.com/smitsoni07/Task_management_system.git
    cd your-repository/taskmgt
 
 
 2. Create and activate a virtual environment:
-
+    ```bash
     python -m venv env
     source env/bin/activate  # On Windows: env\Scripts\activate
     pip install -r requirements.txt
 
 3. Set up the PostgreSQL database:
+    ```bash
     CREATE DATABASE your_database_name;
     CREATE USER your_database_user WITH PASSWORD 'your_database_password';
     ALTER ROLE your_database_user SET client_encoding TO 'utf8';
@@ -33,28 +34,44 @@ This is a Task Management System full-stack application built with Django REST F
     ALTER ROLE your_database_user SET timezone TO 'UTC';
     GRANT ALL PRIVILEGES ON DATABASE your_database_name TO your_database_user;
 
-4. Run database migrations:
+5. Finde .env files:
+    ```bash
+   (Backend)  _ cd:/your_filename/taskmgt/settings/.env
+   (Front) - cd:/tsk_management_ui/.env
+
+7. Settings configration
+   If you want to run locally change manage.py file
+   os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'taskmgt.settings.development')
+
+   If you want to run Production change
+   os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'taskmgt.settings.production')
+
+8. Run database migrations:
+    ```bash
     python manage.py makemigrations
     python manage.py migrate
 
-5. Run the server:
-    
+10. Run the server:
 
 ##### 2. Frontend Setup (React)
 ###### Prerequisites:
+
 - Node.js installed
 - npm or yarn installed
 
 Steps:
 
 1. Navigate to the frontend directory:
+    ```bash
     cd ../task_management_ui
 
 2. Install dependencies: Using npm:
+    ```bash
     npm install
     npm i --save-dev dotenv
 
 4. Run the React development server: Using npm:
+    ```bash
     npm start
 
 5. Access the application:
