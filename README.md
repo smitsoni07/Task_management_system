@@ -52,6 +52,8 @@ This is a Task Management System full-stack application built with Django REST F
     python manage.py migrate
 
 10. Run the server:
+    ```bash
+    python manage.py runserver
 
 ##### 2. Frontend Setup (React)
 ###### Prerequisites:
