@@ -1,11 +1,12 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-const api = process.env.REACT_APP_BACKEND_API
 
-const ProfileSettings = ({ user, apiEndpoint = `${api}/api/profile/` }) => {
+const api = process.env.REACT_APP_BACKEND_API;
+
+const ProfileSettings = ({ apiEndpoint = `${api}/api/profile/` }) => {
     const [formData, setFormData] = useState({
-        username: user?.username || '',
-        email: user?.email || '',
+        username: '',
+        email: '',
         existingPassword: '',
         newPassword: '',
     });
@@ -13,6 +14,31 @@ const ProfileSettings = ({ user, apiEndpoint = `${api}/api/profile/` }) => {
     const [successMessage, setSuccessMessage] = useState('');
     const [errorMessage, setErrorMessage] = useState('');
     const [loading, setLoading] = useState(false);
+
+    // Fetch user data on component mount
+    useEffect(() => {
+        const fetchUserData = async () => {
+            try {
+                const token = localStorage.getItem('token'); // Retrieve JWT token from localStorage
+                const response = await axios.get(apiEndpoint, {
+                    headers: {
+                        Authorization: `Bearer ${token}`,
+                    },
+                });
+                // Update formData with the fetched user data
+                setFormData((prevFormData) => ({
+                    ...prevFormData,
+                    username: response.data.username,
+                    email: response.data.email,
+                }));
+            } catch (err) {
+                console.error('Error fetching user data:', err);
+                setErrorMessage('Failed to load user data.');
+            }
+        };
+
+        fetchUserData();
+    }, [apiEndpoint]);
 
     const handleChange = (e) => {
         const { name, value } = e.target;
