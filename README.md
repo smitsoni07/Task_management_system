@@ -36,8 +36,8 @@ This is a Task Management System full-stack application built with Django REST F
 
 5. Finde .env files:
     ```bash
-   (Backend)  _ cd:/your_filename/taskmgt/settings/.env
-   (Front) - cd:/tsk_management_ui/.env
+   cd:/your_filename/taskmgt/settings/.env  # Backend
+   cd:/tsk_management_ui/.env  # Front 
 
 7. Settings configration
    If you want to run locally change manage.py file
